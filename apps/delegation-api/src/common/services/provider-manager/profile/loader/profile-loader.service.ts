@@ -2,8 +2,8 @@ import { Injectable, Logger } from "@nestjs/common";
 import { CacheManagerService } from "../../../cache-manager/cache-manager.service";
 import { ProfileInfo } from "../common/models/profile.info";
 import { KeyBaseService } from "../keybase/keybase.service";
-import { Constants } from "@elrondnetwork/erdnest";
 import { AssetsService } from "../../../assets/assets.service";
+import { Constants } from "@multiversx/sdk-nestjs-common";
 
 @Injectable()
 export class ProfileLoaderService {
@@ -44,6 +44,10 @@ export class ProfileLoaderService {
     try {
       const identityInfo = this.assetsService.getIdentityInfo(identity);
       if (identityInfo == null || identityInfo.name == null) {
+        this.logger.warn(`Identity ${identity} not found in Github`, {
+          identity,
+          identityInfo,
+        });
         return;
       }
 
@@ -68,10 +72,16 @@ export class ProfileLoaderService {
     try {
       const data = await this.keybaseService.getProfile(identity);
       if (data == null) {
+        this.logger.warn(`Identity ${identity} not found in Keybase`, {
+          identity,
+        });
         return;
       }
 
       if (data.status.code !== 0) {
+        this.logger.warn(`Identity ${identity} not found in Keybase`, {
+          identity,
+        });
         return;
       }
 
