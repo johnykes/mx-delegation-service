@@ -35,11 +35,11 @@ export class Express {
     app.disable('x-powered-by');
     app.enable('trust-proxy');
 
-    const corsOrigin = process.env.CORS_ORIGINS.split(',').map(item => new RegExp(item)) ?? [];
+    // const corsOrigin = process.env.CORS_ORIGINS.split(',').map(item => new RegExp(item)) ?? [];
 
-    app.enableCors({
-      origin: corsOrigin,
-    });
+    // app.enableCors({
+    //   origin: corsOrigin,
+    // });
 
     if (process.env.NODE_ENV !== 'production') {
       const options = new DocumentBuilder()

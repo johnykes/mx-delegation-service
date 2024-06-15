@@ -45,3 +45,14 @@ It uses on the following internal systems:
 An API instance can be started with the following behavior:
 - public API: provides REST API for the consumers
 - private API: used to report prometheus metrics & health checks
+
+
+# BUILD
+PS: make sure gateway .env variable & other variables are correctly set before
+docker build -t johnykes/mx-delegation-service-custom-1:latest .
+
+# push to hub.docker.com
+docker push johnykes/mx-delegation-service-custom-1:latest
+
+
+docker pull johnykes/mx-delegation-service-custom-1:latest
