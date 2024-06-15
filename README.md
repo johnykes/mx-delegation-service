@@ -48,7 +48,7 @@ An API instance can be started with the following behavior:
 
 
 # BUILD
-PS: make sure gateway .env variable & other variables are correctly set before
+//PS: make sure gateway .env variable & other variables are correctly set before
 docker build -t johnykes/mx-delegation-service-custom-1:latest .
 
 # push to hub.docker.com

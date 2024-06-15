@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import axiosRetry from 'axios-retry';
+// import axiosRetry from 'axios-retry';
 import { Injectable } from '@nestjs/common';
 
 /**
@@ -24,12 +24,12 @@ export class HttpService {
    */
   private setup() {
     this.axiosInstance = axios.create();
-    axiosRetry(this.axiosInstance, {
-      retries: 3,
-      retryDelay: retryCount => {
-        return retryCount * 500;
-      },
-    });
+    // axiosRetry(this.axiosInstance, {
+    //   retries: 3,
+    //   retryDelay: retryCount => {
+    //     return retryCount * 500;
+    //   },
+    // });
   }
 
   /**

@@ -2,14 +2,14 @@ import { elrondConfig } from '../../../config';
 import { Injectable, Logger } from '@nestjs/common';
 import { HttpService } from '../http';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { getHttpAgent, getHttpsAgent } from '../../../utils/http';
+// import { getHttpAgent, getHttpsAgent } from '../../../utils/http';
 import { MultiversXApiNetworkStake } from './models/network-stake.dto';
 import { MultiversXApiValidatorAuctionNode, MultiversXApiValidatorAuctionResponse } from './models/validator-auction.dto';
 
 @Injectable()
 export class ElrondApiService {
-  private readonly httpAgent = getHttpAgent(parseInt(process.env.KEEPALIVE_TIMEOUT_DOWNSTREAM));
-  private readonly httspAgent = getHttpsAgent(parseInt(process.env.KEEPALIVE_TIMEOUT_DOWNSTREAM));
+  // private readonly httpAgent = getHttpAgent(parseInt(process.env.KEEPALIVE_TIMEOUT_DOWNSTREAM));
+  // private readonly httspAgent = getHttpsAgent(parseInt(process.env.KEEPALIVE_TIMEOUT_DOWNSTREAM));
   private readonly logger = new Logger(ElrondApiService.name);
   constructor(
     private readonly httpService: HttpService
@@ -18,9 +18,9 @@ export class ElrondApiService {
   private getConfig = (): AxiosRequestConfig => {
     return {
       baseURL: elrondConfig.elrondApi,
-      timeout: parseInt(process.env.KEEPALIVE_TIMEOUT_DOWNSTREAM),
-      httpAgent: this.httpAgent,
-      httpsAgent: this.httspAgent,
+      // timeout: parseInt(process.env.KEEPALIVE_TIMEOUT_DOWNSTREAM),
+      // httpAgent: this.httpAgent,
+      // httpsAgent: this.httspAgent,
     };
   };
 
@@ -76,6 +76,4 @@ export class ElrondApiService {
       return;
     }
   }
-
-
 }
