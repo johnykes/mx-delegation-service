@@ -17,7 +17,7 @@ export class RedlockService {
    * @param resource
    * @param timeoutSeconds
    */
-  async lockTryOnce(resource: string, timeoutSeconds: number): Promise<BooleanResponse> {
+  async lockTryOnce(resource: string, timeoutSeconds: number): Promise<any> {
     const date = new Date();
     date.setSeconds(date.getSeconds() + timeoutSeconds);
     const lock = await this.redisClient.setnx(resource, date.toString());

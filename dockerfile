@@ -2,7 +2,7 @@ FROM node:18
 # Create app directory
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN yarn install
+RUN yarn install --network-timeout 600000
 # Bundle app source
 COPY . .
 # COPY .env .env.development ./
